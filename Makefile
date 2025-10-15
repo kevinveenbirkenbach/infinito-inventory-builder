@@ -51,8 +51,8 @@ link-path: init
 
 install: init pkgmgr-install link-path
 
-up: init
-	docker compose up --build
+up: init build
+	docker compose up
 
 build: init
 	docker compose build

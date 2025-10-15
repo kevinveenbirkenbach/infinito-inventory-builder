@@ -1,7 +1,3 @@
-<h1>Infinito Inventory Builder</h1>
-<p>
-  Generate Ansible inventories interactively from invokable Infinito.Nexus roles.
-</p>
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
