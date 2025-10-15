@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    container_name: infinito-inventory-builder-backend
+    environment:
+      - WORKSPACE=/workspace
+      - RELATIVE_ROLES_DIR=roles
+      - RELATIVE_CATEGORIES_FILE=roles/categories.yml
+    volumes:
+      - ${INFINITO_NEXUS_PATH:-../infinito-nexus}:/workspace:ro
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: infinito-inventory-builder-frontend
+    environment:
+      - VITE_API_BASE=http://localhost:${BACKEND_PORT:-8000}
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
